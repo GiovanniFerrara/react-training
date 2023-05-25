@@ -1,0 +1,75 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "title": "Cos'è 'state' in react?",
+      "body": "Lo state è un oggetto che contiene i dati del componente e che può essere modificato dal componente stesso.",
+      "authorId": 1,
+      "date": "2023-05-24T18:25:43.511Z",
+      "category": "React",
+      "likes": 5
+    },
+    {
+      "id": 3,
+      "title": "Come usare gli hooks in React?",
+      "body": "I hooks sono delle funzioni speciali che ti permettono di 'agganciarti' alle features di React senza dover definire una classe.",
+      "authorId": 2,
+      "date": "2023-05-25T18:25:43.511Z",
+      "category": "React",
+      "likes": 7
+    },
+    {
+      "title": "New Post",
+      "body": "This is a new post",
+      "authorId": 1,
+      "date": "2023-06-01T18:25:43.511Z",
+      "category": "JavaScript",
+      "likes": 0,
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 3,
+      "body": "Mi piace come spieghi i concetti, grazie!",
+      "postId": 2,
+      "profileId": 2,
+      "date": "2023-05-24T19:00:43.511Z"
+    },
+    {
+      "body": "This is a new comment",
+      "postId": 1,
+      "profileId": 1,
+      "date": "2023-06-01T19:00:43.511Z",
+      "id": 4
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Gian Marco",
+      "bio": "Sono un appassionato di programmazione e tecnologia. Mi piace condividere quello che imparo attraverso il mio blog.",
+      "avatarUrl": "https://example.com/path-to-avatar1.png"
+    },
+    {
+      "id": 2,
+      "name": "Luca",
+      "bio": "Sono un developer con una grande passione per il frontend, in particolare per React. In questo blog, condivido tutto quello che so su React.",
+      "avatarUrl": "https://example.com/path-to-avatar2.png"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "name": "Gian Marco",
+      "bio": "Sono un appassionato di programmazione e tecnologia. Mi piace condividere quello che imparo attraverso il mio blog.",
+      "avatarUrl": "https://example.com/path-to-avatar1.png"
+    },
+    {
+      "id": 2,
+      "name": "Luca",
+      "bio": "Sono un developer con una grande passione per il frontend, in particolare per React. Mi piace interagire con la community e apprendere da essa.",
+      "avatarUrl": "https://example.com/path-to-avatar2.png"
+    }
+  ]
+}
