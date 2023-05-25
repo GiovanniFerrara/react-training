@@ -48,7 +48,12 @@ const GlobalStyle = () => (
         color: ${Theme.colors.textPrimary};
       }
 
-      h1, h2, h3, h4, h5, h6 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         font-family: ${Theme.fonts.secondary};
       }
 
@@ -78,7 +83,8 @@ const GlobalStyle = () => (
         }
       }
 
-      input, textarea {
+      input,
+      textarea {
         width: 100%;
         padding: 10px 15px;
         font-size: ${Theme.fontSize.medium};
