@@ -1,19 +1,21 @@
 import { Theme } from '../../theme.tsx';
 import styled from '@emotion/styled';
 
-function Posts() {
+interface PostProps {
+  posts: {
+    id: number;
+    title: string;
+    body: string;
+  }[];
+}
+
+function Posts(props: PostProps) {
   return (
     <PostsWrapper>
-      {[
-        {
-          title: 'Post 1',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam ni',
-        },
-      ].map((post, index) => (
+      {props.posts.map((post, index) => (
         <PostContainer key={index}>
           <PostTitle>{post.title}</PostTitle>
-          <PostContent>{post.content}</PostContent>
+          <PostContent>{post.body}</PostContent>
         </PostContainer>
       ))}
     </PostsWrapper>
