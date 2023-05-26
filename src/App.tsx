@@ -13,15 +13,26 @@ interface Post {
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
-    client<Post[]>(endpoints.posts).then((res) => setPosts(res));
+    setLoading(true);
+    client<Post[]>(endpoints.posts)
+      .then((res) => setPosts(res))
+      .then(() => setLoading(false))
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
     <AppWrapper>
       <div className="post-container">
-        <Posts posts={posts} />
+        {!loading && <Posts posts={posts} />}
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
         <GlobalStyle />
       </div>
     </AppWrapper>
