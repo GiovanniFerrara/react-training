@@ -40,12 +40,14 @@ const Theme = {
 const GlobalStyle = () => (
   <Global
     styles={css`
-      body {
+      body,
+      #root {
         margin: 0;
         padding: 0;
         font-family: ${Theme.fonts.primary};
         background-color: ${Theme.colors.background};
         color: ${Theme.colors.textPrimary};
+        height: 100vh;
       }
 
       h1,
