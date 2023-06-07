@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Post from '../post/post';
+import Post from '../../../components/post/post';
 
 interface PostProps {
   posts: {
@@ -13,7 +13,7 @@ function PostList(props: PostProps) {
   return (
     <PostsWrapper>
       {props.posts.map((post) => (
-        <Post title={post.title} body={post.body} key={post.id} />
+        <Post {...post} />
       ))}
     </PostsWrapper>
   );

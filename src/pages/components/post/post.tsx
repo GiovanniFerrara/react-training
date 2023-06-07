@@ -1,15 +1,13 @@
 import styled from '@emotion/styled';
-import { Theme } from '../../../../theme';
+import { Theme } from '../../../theme';
+import { Post as PostI } from '../../../entities/post';
 
-interface PostProps {
-  title: string;
-  body: string;
-}
+type PostProps = PostI;
 
-export default function Post({ title, body }: PostProps) {
+export default function Post({ title, body, id }: PostProps) {
   return (
     <PostContainer>
-      <PostTitle>{title}</PostTitle>
+      <PostTitle href={`/posts/${id}`}>{title}</PostTitle>
       <PostContent>{body}</PostContent>
     </PostContainer>
   );
@@ -25,7 +23,7 @@ const PostContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const PostTitle = styled.h2`
+const PostTitle = styled.a`
   font-size: ${Theme.fontSize.xlarge};
   color: ${Theme.colors.primary};
   margin-bottom: 10px;
