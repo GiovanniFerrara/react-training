@@ -1,13 +1,16 @@
 import styled from '@emotion/styled';
 import { Theme } from '../../../theme';
-import { Post as PostI } from '../../../entities/post';
+import { IPost } from '../../../entities/post';
+import { Link } from 'react-router-dom';
 
-type PostProps = PostI;
+type PostProps = IPost;
 
 export default function Post({ title, body, id }: PostProps) {
   return (
     <PostContainer>
-      <PostTitle href={`/posts/${id}`}>{title}</PostTitle>
+      <Link to={`/posts/${id}`}>
+        <PostTitle>{title}</PostTitle>
+      </Link>
       <PostContent>{body}</PostContent>
     </PostContainer>
   );
@@ -23,7 +26,7 @@ const PostContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const PostTitle = styled.a`
+const PostTitle = styled.h1`
   font-size: ${Theme.fontSize.xlarge};
   color: ${Theme.colors.primary};
   margin-bottom: 10px;

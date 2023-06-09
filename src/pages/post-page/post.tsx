@@ -1,9 +1,11 @@
-// implentare il componente PostPage, deve mostrare il titolo del singolo post e il contenuto
+import { useParams } from 'react-router-dom';
 
 function PostPage() {
+  const { id } = useParams<{ id: string }>();
+
   return (
     <div>
-      <h1>PostPage</h1>
+      <h1>Post Page id: {id}</h1>
     </div>
   );
 }

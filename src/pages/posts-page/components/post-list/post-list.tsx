@@ -1,12 +1,9 @@
 import styled from '@emotion/styled';
 import Post from '../../../components/post/post';
+import { IPost } from '../../../../entities/post';
 
 interface PostProps {
-  posts: {
-    id: number;
-    title: string;
-    body: string;
-  }[];
+  posts: IPost[];
 }
 
 function PostList(props: PostProps) {
