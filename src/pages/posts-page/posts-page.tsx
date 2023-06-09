@@ -10,7 +10,9 @@ function PostsPage() {
   }
 
   if (error) {
-    return <PageWithCenteredContent>Error: {error}</PageWithCenteredContent>;
+    return (
+      <PageWithCenteredContent>Error: {error.message}</PageWithCenteredContent>
+    );
   }
 
   return (

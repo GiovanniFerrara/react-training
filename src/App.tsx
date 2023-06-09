@@ -1,17 +1,18 @@
-import PostPage from './pages/post-page/post.tsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PostsPage from './pages/posts-page/posts-page.tsx';
 import { GlobalStyle } from './theme.tsx';
+import PostPage from './pages/post-page/post.tsx';
 
 function App() {
-  const currentPage = window.location.pathname;
   return (
     <>
-      {/* NOTA: questa organizzazione del routing è un approccio provvisiorio e incorretto
-       valido solo a titolo dimostrativo */}
-
-      {currentPage === '/' && <PostsPage />}
-      {currentPage.includes('/posts') && <PostPage />}
       <GlobalStyle />
+      <Router>
+        <Routes>
+          <Route path="/" Component={PostsPage} />
+          <Route path="/posts/:id" Component={PostPage} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -13,7 +13,7 @@ function PostList(props: PostProps) {
   return (
     <PostsWrapper>
       {props.posts.map((post) => (
-        <Post {...post} />
+        <Post key={post.id} {...post} />
       ))}
     </PostsWrapper>
   );
