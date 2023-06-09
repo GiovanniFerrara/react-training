@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PostsPage from './pages/posts-page/posts-page.tsx';
 import { GlobalStyle } from './theme.tsx';
-import PostPage from './pages/post-page/post.tsx';
+import PostPage from './pages/post-page/post-page.tsx';
 
 function App() {
   return (
