@@ -8,11 +8,15 @@ function PostPage() {
   const { post, loading, error } = usePost(id);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
   }
 
   if (error || post === null) {
-    return <p>Something went wrong: {error?.message}</p>;
+    return (
+      <PageWithCenteredContent>
+        Something went wrong: {error?.message}
+      </PageWithCenteredContent>
+    );
   }
 
   return (
