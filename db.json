@@ -26,6 +26,15 @@
       "category": "JavaScript",
       "likes": 0,
       "id": 4
+    },
+    {
+      "title": "wef",
+      "body": "wer",
+      "category": "wer",
+      "id": 32,
+      "authorId": 1,
+      "date": "2023-07-04T19:41:28.719Z",
+      "likes": 0
     }
   ],
   "comments": [

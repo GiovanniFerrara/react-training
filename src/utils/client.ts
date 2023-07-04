@@ -1,7 +1,7 @@
 export interface ClientOptions extends RequestInit {
   method?: 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT';
   headers?: HeadersInit;
-  data?: Record<string, unknown> | unknown[] | FormData;
+  data?: unknown | FormData;
 }
 
 const BASE_URL = import.meta.env.VITE_API_URL;
