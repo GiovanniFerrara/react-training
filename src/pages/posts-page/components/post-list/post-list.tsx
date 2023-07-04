@@ -6,10 +6,10 @@ interface PostProps {
   posts: IPost[];
 }
 
-function PostList(props: PostProps) {
+function PostList({ posts }: PostProps) {
   return (
     <PostsWrapper>
-      {props.posts.map((post) => (
+      {posts.map((post) => (
         <Post key={post.id} {...post} />
       ))}
     </PostsWrapper>
