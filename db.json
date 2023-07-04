@@ -44,6 +44,15 @@
       "authorId": 1,
       "date": "2023-07-04T19:58:50.692Z",
       "likes": 0
+    },
+    {
+      "title": "asd",
+      "body": "asdas",
+      "category": "asdasd",
+      "id": 796,
+      "authorId": 1,
+      "date": "2023-07-04T19:59:59.754Z",
+      "likes": 0
     }
   ],
   "comments": [
