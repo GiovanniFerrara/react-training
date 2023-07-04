@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IPost } from '../../entities/post';
 import client from '../../utils/client';
 import { endpoints } from '../../constants/endpoints';
@@ -9,9 +9,9 @@ export function usePosts() {
   const [error, setError] = useState<Error | null>(null);
   const [refetchHash, setRefetchHash] = useState<number>(new Date().getTime());
 
-  function refetch() {
+  const refetch = useCallback(() => {
     setRefetchHash(new Date().getTime());
-  }
+  }, []);
 
   useEffect(() => {
     setLoading(true);
