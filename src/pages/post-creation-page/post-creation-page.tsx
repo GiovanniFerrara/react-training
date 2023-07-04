@@ -4,12 +4,12 @@ import PostList from '../posts-page/components/post-list/post-list';
 import PostCreationForm from './components/post-creation-form';
 
 function PostCreationPage() {
-  const { posts } = usePosts();
+  const { posts, refetch } = usePosts();
 
   return (
     <PageWithCenteredContent>
       <h1>Post Creation Page</h1>
-      <PostCreationForm />
+      <PostCreationForm refetchPosts={refetch} />
       <div>
         <h2>Posts Preview</h2>
         <div className="column">

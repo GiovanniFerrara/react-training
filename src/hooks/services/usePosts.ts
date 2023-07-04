@@ -7,6 +7,11 @@ export function usePosts() {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const [refetchHash, setRefetchHash] = useState<number>(new Date().getTime());
+
+  function refetch() {
+    setRefetchHash(new Date().getTime());
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -17,7 +22,7 @@ export function usePosts() {
         setError(err);
         setLoading(false);
       });
-  }, []);
+  }, [refetchHash]);
 
-  return { posts, loading, error };
+  return { posts, loading, error, refetch };
 }

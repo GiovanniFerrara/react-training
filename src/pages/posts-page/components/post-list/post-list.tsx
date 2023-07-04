@@ -4,6 +4,7 @@ import { IPost } from '../../../../entities/post';
 
 interface PostProps {
   posts: IPost[];
+  refetchPosts?: () => void;
 }
 
 function PostList({ posts }: PostProps) {

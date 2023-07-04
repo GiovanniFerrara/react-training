@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useCreatePost } from '../../../hooks/services/useCreatePost';
 import { PostCreationFormWrapper } from './post-creation-form.styles';
 
-function PostCreationForm() {
+interface PostCreationFormProps {
+  refetchPosts?: () => void;
+}
+
+function PostCreationForm({ refetchPosts }: PostCreationFormProps) {
   const { mutate: createPost, loading, error, success } = useCreatePost();
 
   const [title, setTitle] = useState('');
@@ -34,8 +38,9 @@ function PostCreationForm() {
   useEffect(() => {
     if (success) {
       resetForm();
+      refetchPosts?.();
     }
-  }, [success]);
+  }, [success, refetchPosts]);
 
   return (
     <PostCreationFormWrapper>

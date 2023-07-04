@@ -35,6 +35,15 @@
       "authorId": 1,
       "date": "2023-07-04T19:53:08.623Z",
       "likes": 0
+    },
+    {
+      "title": "asdsa",
+      "body": "asda",
+      "category": "asda",
+      "id": 567,
+      "authorId": 1,
+      "date": "2023-07-04T19:58:50.692Z",
+      "likes": 0
     }
   ],
   "comments": [
