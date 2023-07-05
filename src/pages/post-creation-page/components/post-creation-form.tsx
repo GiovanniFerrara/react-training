@@ -56,12 +56,17 @@ function PostCreationForm() {
         </div>
         <div>
           <label>Category: </label>
-          <input
-            type="text"
+          <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            required
-          />
+          >
+            <option disabled selected value="">
+              Select a category
+            </option>
+            <option value="react">React</option>
+            <option value="redux">Redux</option>
+            <option value="typescript">TypeScript</option>
+          </select>
         </div>
 
         <button disabled={loading} type="submit">
