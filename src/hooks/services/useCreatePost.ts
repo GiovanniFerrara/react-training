@@ -4,9 +4,9 @@ import client from '../../utils/client';
 import { endpoints } from '../../constants/endpoints';
 
 export function useCreatePost() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [isSuccess, setSuccess] = useState<boolean>(false);
 
   const createPost = (post: IPost) => {
     setLoading(true);
@@ -24,5 +24,5 @@ export function useCreatePost() {
       });
   };
 
-  return { mutate: createPost, loading, error, success };
+  return { mutate: createPost, isLoading, error, isSuccess };
 }

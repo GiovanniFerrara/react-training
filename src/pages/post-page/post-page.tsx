@@ -5,9 +5,9 @@ import PostDetails from './components/post-details';
 
 function PostPage() {
   const { id } = useParams<{ id: string }>();
-  const { post, loading, error } = usePost(id);
+  const { post, isLoading, error } = usePost(id);
 
-  if (loading) {
+  if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
   }
 

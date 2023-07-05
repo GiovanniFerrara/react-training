@@ -4,9 +4,9 @@ import { usePosts } from '../../hooks/services/usePosts.ts';
 import PostList from './components/post-list/post-list.tsx';
 
 function PostsPage() {
-  const { posts, loading, error } = usePosts();
+  const { data: posts, isLoading, error } = usePosts();
 
-  if (loading) {
+  if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
   }
 

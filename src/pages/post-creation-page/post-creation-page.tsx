@@ -4,7 +4,7 @@ import PostList from '../posts-page/components/post-list/post-list';
 import PostCreationForm from './components/post-creation-form';
 
 function PostCreationPage() {
-  const { posts, refetch } = usePosts();
+  const { data: posts, refetch } = usePosts();
 
   return (
     <PageWithCenteredContent>

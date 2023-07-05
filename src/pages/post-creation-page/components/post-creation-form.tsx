@@ -7,7 +7,7 @@ interface PostCreationFormProps {
 }
 
 function PostCreationForm({ refetchPosts }: PostCreationFormProps) {
-  const { mutate: createPost, loading, error, success } = useCreatePost();
+  const { mutate: createPost, isLoading, error, isSuccess } = useCreatePost();
 
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -36,11 +36,11 @@ function PostCreationForm({ refetchPosts }: PostCreationFormProps) {
   };
 
   useEffect(() => {
-    if (success) {
+    if (isSuccess) {
       resetForm();
       refetchPosts?.();
     }
-  }, [success, refetchPosts]);
+  }, [isSuccess, refetchPosts]);
 
   return (
     <PostCreationFormWrapper>
@@ -74,8 +74,8 @@ function PostCreationForm({ refetchPosts }: PostCreationFormProps) {
             />
           </div>
 
-          <button disabled={loading} type="submit">
-            {loading ? 'Creating Post' : 'Create Post'}
+          <button disabled={isLoading} type="submit">
+            {isLoading ? 'Creating Post' : 'Create Post'}
           </button>
 
           <p className="error-message">{error?.message}</p>

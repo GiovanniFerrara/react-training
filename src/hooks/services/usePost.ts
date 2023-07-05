@@ -9,7 +9,7 @@ export function usePost(postId?: string) {
   }
 
   const [post, setPost] = useState<IPost | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -23,5 +23,5 @@ export function usePost(postId?: string) {
       });
   }, [postId]);
 
-  return { post, loading, error };
+  return { post, isLoading, error };
 }
