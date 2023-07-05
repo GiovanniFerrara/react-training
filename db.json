@@ -44,6 +44,24 @@
       "authorId": 1,
       "date": "2023-07-04T19:58:50.692Z",
       "likes": 0
+    },
+    {
+      "title": "sdfsdfdsfsdfds",
+      "body": "sfsdf",
+      "category": "dsfsdfdsf",
+      "id": 154,
+      "authorId": 1,
+      "date": "2023-07-05T10:25:13.348Z",
+      "likes": 0
+    },
+    {
+      "title": "New one",
+      "body": "asdas",
+      "category": "sda",
+      "id": 305,
+      "authorId": 1,
+      "date": "2023-07-05T10:25:20.180Z",
+      "likes": 0
     }
   ],
   "comments": [

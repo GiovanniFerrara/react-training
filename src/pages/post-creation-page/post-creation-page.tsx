@@ -4,12 +4,20 @@ import PostList from '../posts-page/components/post-list/post-list';
 import PostCreationForm from './components/post-creation-form';
 
 function PostCreationPage() {
-  const { data: posts, refetch } = usePosts();
+  const { data: posts, isLoading } = usePosts();
+
+  if (!posts) {
+    return null;
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <PageWithCenteredContent>
       <h1>Post Creation Page</h1>
-      <PostCreationForm refetchPosts={refetch} />
+      <PostCreationForm />
       <div>
         <h2>Posts Preview</h2>
         <div className="column">

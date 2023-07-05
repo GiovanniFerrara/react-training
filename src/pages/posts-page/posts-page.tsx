@@ -16,6 +16,10 @@ function PostsPage() {
     );
   }
 
+  if (!posts) {
+    return null;
+  }
+
   return (
     <PageWithCenteredContent>
       <Link to="/posts/new">

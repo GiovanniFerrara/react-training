@@ -5,13 +5,13 @@ import PostDetails from './components/post-details';
 
 function PostPage() {
   const { id } = useParams<{ id: string }>();
-  const { post, isLoading, error } = usePost(id);
+  const { data: post, isLoading, error } = usePost(id);
 
   if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
   }
 
-  if (error || post === null) {
+  if (error || !post) {
     return (
       <PageWithCenteredContent>
         Something went wrong: {error?.message}

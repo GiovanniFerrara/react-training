@@ -1,28 +1,27 @@
-import { useState } from 'react';
 import { IPost } from '../../entities/post';
 import client from '../../utils/client';
 import { endpoints } from '../../constants/endpoints';
+import { useMutation, useQueryClient } from 'react-query';
+
+type PostResponse = IPost;
+type PostError = {
+  message: string;
+};
+type PostVariables = IPost;
 
 export function useCreatePost() {
-  const [isLoading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
-  const [isSuccess, setSuccess] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
-  const createPost = (post: IPost) => {
-    setLoading(true);
+  const query = useMutation<PostResponse, PostError, PostVariables>({
+    mutationFn: (post: IPost) =>
+      client<IPost>(endpoints.posts, {
+        data: post,
+        method: 'POST',
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries([endpoints.posts]);
+    },
+  });
 
-    client<IPost>(endpoints.posts, {
-      data: post,
-      method: 'POST',
-    })
-      .then(() => setLoading(false))
-      .then(() => setSuccess(true))
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-        setSuccess(false);
-      });
-  };
-
-  return { mutate: createPost, isLoading, error, isSuccess };
+  return query;
 }
