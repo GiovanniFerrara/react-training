@@ -6,7 +6,7 @@ import PostCreationPage from './pages/post-creation-page/post-creation-page.tsx'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import LoginPage from './pages/login-page/login-page.tsx';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { AuthProvider } from './context/auth-context.tsx';
+import { AuthProvider } from './context/auth-context/auth-context.tsx';
 
 const queryClient = new QueryClient();
 
