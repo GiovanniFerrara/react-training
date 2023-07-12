@@ -25,7 +25,10 @@ function PostsPage() {
       <Link to="/posts/new">
         <button>Create New Post</button>
       </Link>
-
+      <br />
+      <Link to="/login">
+        <button>Login</button>
+      </Link>
       <PostList posts={posts} />
     </PageWithCenteredContent>
   );

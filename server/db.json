@@ -27,7 +27,6 @@
       "likes": 0,
       "id": 4
     }
-    
   ],
   "comments": [
     {
@@ -62,15 +61,24 @@
   "profiles": [
     {
       "id": 1,
+      "userId": 1,
       "name": "Gian Marco",
       "bio": "Sono un appassionato di programmazione e tecnologia. Mi piace condividere quello che imparo attraverso il mio blog.",
       "avatarUrl": "https://example.com/path-to-avatar1.png"
     },
     {
       "id": 2,
+      "userId": 2,
       "name": "Luca",
       "bio": "Sono un developer con una grande passione per il frontend, in particolare per React. Mi piace interagire con la community e apprendere da essa.",
       "avatarUrl": "https://example.com/path-to-avatar2.png"
+    }
+  ],
+  "users": [
+    {
+      "email": "gian@marco.com",
+      "password": "$2a$10$ibPaQ1.pkJHn2FeXQvjW3eddrMW74LEuOae/eePiOckzE9dlYTBhK",
+      "id": 1
     }
   ]
 }

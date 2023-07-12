@@ -4,6 +4,7 @@ import { GlobalStyle } from './theme.tsx';
 import PostPage from './pages/post-page/post-page.tsx';
 import PostCreationPage from './pages/post-creation-page/post-creation-page.tsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import LoginPage from './pages/login-page/login-page.tsx';
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" Component={PostsPage} />
             <Route path="/posts/:id" Component={PostPage} />
             <Route path="/posts/new" Component={PostCreationPage} />
+            <Route path="/login" Component={LoginPage} />
             <Route path="*" Component={() => <h1>Not Found</h1>} />
           </Routes>
         </Router>
