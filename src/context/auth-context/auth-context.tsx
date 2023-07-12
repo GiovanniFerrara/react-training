@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useCallback, useMemo, useReducer } from 'react';
 import {
   AuthContextData,
   AuthContextAction,
@@ -37,30 +37,40 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     accessToken: undefined,
   });
 
-  const login = (user: { email: string; id: string }, accessToken: string) => {
-    dispatch({
-      type: AuthContextActionType.LOGIN,
-      payload: {
-        user,
-        accessToken,
-      },
-    });
+  const login = useCallback(
+    (user: { email: string; id: string }, accessToken: string) => {
+      dispatch({
+        type: AuthContextActionType.LOGIN,
+        payload: {
+          user,
+          accessToken,
+        },
+      });
 
-    localStorage.setItem('accessToken', accessToken);
-  };
+      localStorage.setItem('accessToken', accessToken);
+    },
+    [],
+  );
 
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch({
       type: AuthContextActionType.LOGOUT,
     });
 
     localStorage.removeItem('accessToken');
-  };
+  }, []);
+
+  const contextData = useMemo(
+    () => ({
+      login,
+      logout,
+      ...state,
+    }),
+    [login, logout, state],
+  );
 
   return (
-    <AuthContext.Provider value={{ login, logout, ...state }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
   );
 };
 
