@@ -2,13 +2,12 @@ import { Link } from 'react-router-dom';
 import PageWithCenteredContent from '../../components/page-layout/page-with-centered-content.tsx';
 import { usePosts } from '../../hooks/services/usePosts.ts';
 import PostList from './components/post-list/post-list.tsx';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/auth-context.tsx';
+import useAuthData from '../../hooks/auth/useAuthData.tsx';
 
 function PostsPage() {
   const { data: posts, isLoading, error } = usePosts();
 
-  const authData = useContext(AuthContext);
+  const authData = useAuthData();
 
   if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
