@@ -35,7 +35,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"title\": \"New Post\", \"body\": \"This is a new post\", \"authorId\": 1, \"date\": \"2023-06-01T18:25:43.511Z\", \"category\": \"JavaScript\", \"likes\": 0}"
+							"raw": "{\n    \"title\": \"New Post\",\n    \"body\": \"This is a new post\",\n    \"authorId\": 1,\n    \"date\": \"2023-06-01T18:25:43.511Z\",\n    \"category\": \"JavaScript\",\n    \"likes\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/posts",
@@ -470,6 +475,67 @@
 							"port": "8080",
 							"path": [
 								"authors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gian@marco.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Author\",\n    \"bio\": \"This is a new author\",\n    \"avatarUrl\": \"https://example.com/path-to-avatar3.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/authentication",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authentication"
 							]
 						}
 					},

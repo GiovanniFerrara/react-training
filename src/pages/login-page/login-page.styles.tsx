@@ -24,6 +24,7 @@ export const LoginPageWrapper = styled.div`
     label {
       color: ${Theme.colors.textSecondary};
       font-size: ${Theme.fontSize.large};
+      width: 20rem;
 
       input {
         margin-top: 0.5rem;
@@ -33,5 +34,8 @@ export const LoginPageWrapper = styled.div`
     button {
       margin-top: 1rem;
     }
+  }
+  .error {
+    color: red;
   }
 `;

@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 import { LoginPageWrapper } from './login-page.styles';
-
-interface Credentials {
-  username: string;
-  password: string;
-}
+import { useLogin } from '../../hooks/services/useLogin';
 
 const LoginPage: React.FC = () => {
-  const [credentials, setCredentials] = useState<Credentials>({
-    username: '',
-    password: '',
-  });
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCredentials({
-      ...credentials,
-      [event.target.name]: event.target.value,
-    });
+  const { mutate: login, error } = useLogin();
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
+    login({ email, password });
   };
 
   return (
@@ -28,12 +26,12 @@ const LoginPage: React.FC = () => {
       <h1>Login Page</h1>
       <form onSubmit={handleLogin}>
         <label>
-          Username:
+          Email:
           <input
             type="text"
-            name="username"
-            value={credentials.username}
-            onChange={handleInputChange}
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
             required
           />
         </label>
@@ -42,11 +40,12 @@ const LoginPage: React.FC = () => {
           <input
             type="password"
             name="password"
-            value={credentials.password}
-            onChange={handleInputChange}
+            value={password}
+            onChange={handlePasswordChange}
             required
           />
         </label>
+        {error && <p className="error">{error}</p>}
         <button type="submit">Log In</button>
       </form>
     </LoginPageWrapper>
