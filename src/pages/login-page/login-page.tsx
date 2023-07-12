@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { LoginPageWrapper } from './login-page.styles';
 import { useLogin } from '../../hooks/services/useLogin';
 import { useNavigate } from 'react-router-dom';
+import useAuthData from '../../hooks/auth/useAuthData';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const { mutate: login, error, isSuccess } = useLogin();
+  const { mutateAsync: login, error, isSuccess } = useLogin();
+
+  const { login: storeLoginData, user } = useAuthData();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -17,9 +20,10 @@ const LoginPage: React.FC = () => {
     setPassword(event.target.value);
   };
 
-  const handleLogin = (event: React.FormEvent) => {
+  const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    login({ email, password });
+    const response = await login({ email, password });
+    storeLoginData(response.user, response.accessToken);
   };
 
   const navigate = useNavigate();
