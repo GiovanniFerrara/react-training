@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LoginPageWrapper } from './login-page.styles';
 import { useLogin } from '../../hooks/services/useLogin';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const { mutate: login, error } = useLogin();
+  const { mutate: login, error, isSuccess } = useLogin();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -20,6 +21,14 @@ const LoginPage: React.FC = () => {
     event.preventDefault();
     login({ email, password });
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/');
+    }
+  }, [isSuccess, navigate]);
 
   return (
     <LoginPageWrapper>
