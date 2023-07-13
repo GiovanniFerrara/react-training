@@ -8,7 +8,7 @@ import useProfile from '../../hooks/services/useProfile.ts';
 function PostsPage() {
   const { data: posts, isLoading, error } = usePosts();
 
-  const { user, logout } = useAuthData();
+  const { logout } = useAuthData();
   const { data: profile } = useProfile();
 
   if (isLoading) {
@@ -38,7 +38,7 @@ function PostsPage() {
 
       <br />
 
-      {!user && (
+      {!profile && (
         <Link to="/login">
           <button>Login</button>
         </Link>
@@ -46,7 +46,7 @@ function PostsPage() {
 
       <br />
 
-      {user && <button onClick={logout}>Logout</button>}
+      {profile && <button onClick={logout}>Logout</button>}
 
       <PostList posts={posts} />
     </PageWithCenteredContent>
