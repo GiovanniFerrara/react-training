@@ -3,11 +3,13 @@ import PageWithCenteredContent from '../../components/page-layout/page-with-cent
 import { usePosts } from '../../hooks/services/usePosts.ts';
 import PostList from './components/post-list/post-list.tsx';
 import useAuthData from '../../hooks/auth/useAuthData.tsx';
+import useProfile from '../../hooks/services/useProfile.ts';
 
 function PostsPage() {
   const { data: posts, isLoading, error } = usePosts();
 
   const { user, logout } = useAuthData();
+  const { data: profile } = useProfile();
 
   if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
@@ -25,19 +27,27 @@ function PostsPage() {
 
   return (
     <PageWithCenteredContent>
-      <h1>Welcome {user?.email}!</h1>
+      {profile && <h1>Welcome {profile?.name}!</h1>}
       <br />
-      {user?.id && (
+
+      {profile?.id && (
         <Link to="/posts/new">
           <button>Create New Post</button>
         </Link>
       )}
+
       <br />
-      <Link to="/login">
-        <button>Login</button>
-      </Link>
+
+      {!user && (
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+      )}
+
       <br />
-      <button onClick={logout}>Logout</button>
+
+      {user && <button onClick={logout}>Logout</button>}
+
       <PostList posts={posts} />
     </PageWithCenteredContent>
   );

@@ -5,6 +5,7 @@ import {
   AuthContextActionType,
   AuthReducerState,
 } from './auth-context.types';
+import { useQueryClient } from 'react-query';
 
 const AuthContext = createContext<null | AuthContextData>(null);
 
@@ -37,6 +38,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     accessToken: undefined,
   });
 
+  const queryClient = useQueryClient();
+
   const login = useCallback(
     (user: { email: string; id: string }, accessToken: string) => {
       dispatch({
@@ -58,7 +61,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     });
 
     localStorage.removeItem('accessToken');
-  }, []);
+    queryClient.clear();
+  }, [queryClient]);
 
   const contextData = useMemo(
     () => ({

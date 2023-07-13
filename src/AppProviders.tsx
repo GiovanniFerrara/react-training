@@ -11,12 +11,10 @@ interface AppProps {
 function AppProviders({ children }: AppProps) {
   return (
     <>
-      <AuthProvider>
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
-          {children}
-        </QueryClientProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <AuthProvider>{children}</AuthProvider>
+      </QueryClientProvider>
     </>
   );
 }
