@@ -12,11 +12,11 @@ type PostVariables = IPost;
 export function useCreatePost() {
   const queryClient = useQueryClient();
 
-  const client = useAuthenticatedClient();
+  const authenticatedClient = useAuthenticatedClient();
 
   const query = useMutation<PostResponse, PostError, PostVariables>({
     mutationFn: (post: IPost) =>
-      client<IPost>(endpoints.posts, {
+      authenticatedClient<IPost>(endpoints.posts, {
         data: post,
         method: 'POST',
       }),
