@@ -1,7 +1,7 @@
 import { IPost } from '../../entities/post';
-import client from '../../utils/client';
 import { endpoints } from '../../constants/endpoints';
 import { useMutation, useQueryClient } from 'react-query';
+import useAuthenticatedClient from '../useAuthenticatedClient';
 
 type PostResponse = IPost;
 type PostError = {
@@ -11,6 +11,8 @@ type PostVariables = IPost;
 
 export function useCreatePost() {
   const queryClient = useQueryClient();
+
+  const client = useAuthenticatedClient();
 
   const query = useMutation<PostResponse, PostError, PostVariables>({
     mutationFn: (post: IPost) =>
