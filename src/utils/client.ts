@@ -2,6 +2,7 @@ export interface ClientOptions extends RequestInit {
   method?: 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT';
   headers?: HeadersInit;
   data?: unknown | FormData;
+  authenticatedRequest?: boolean;
 }
 
 const BASE_URL = import.meta.env.VITE_API_URL;
@@ -16,6 +17,11 @@ async function client<T>(
 
   if (data) {
     headers.set('Content-Type', 'application/json');
+  }
+
+  if (options.authenticatedRequest) {
+    const token = localStorage.getItem('accessToken');
+    headers.set('Authorization', `Bearer ${token}`);
   }
 
   const config = {

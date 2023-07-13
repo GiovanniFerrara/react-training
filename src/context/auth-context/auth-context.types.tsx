@@ -18,6 +18,7 @@ export interface AuthReducerState {
 export enum AuthContextActionType {
   LOGIN = 'LOGIN',
   LOGOUT = 'LOGOUT',
+  SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN',
 }
 export type AuthContextAction =
   | {
@@ -32,4 +33,10 @@ export type AuthContextAction =
     }
   | {
       type: AuthContextActionType.LOGOUT;
+    }
+  | {
+      type: AuthContextActionType.SET_ACCESS_TOKEN;
+      payload: {
+        accessToken: string;
+      };
     };

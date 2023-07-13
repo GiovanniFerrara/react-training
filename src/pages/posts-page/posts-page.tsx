@@ -7,7 +7,7 @@ import useAuthData from '../../hooks/auth/useAuthData.tsx';
 function PostsPage() {
   const { data: posts, isLoading, error } = usePosts();
 
-  const authData = useAuthData();
+  const { user, logout } = useAuthData();
 
   if (isLoading) {
     return <PageWithCenteredContent>Loading...</PageWithCenteredContent>;
@@ -25,9 +25,9 @@ function PostsPage() {
 
   return (
     <PageWithCenteredContent>
-      <h1>Welcome {authData?.user?.email}!</h1>
+      <h1>Welcome {user?.email}!</h1>
       <br />
-      {authData?.user?.id && (
+      {user?.id && (
         <Link to="/posts/new">
           <button>Create New Post</button>
         </Link>
@@ -36,6 +36,8 @@ function PostsPage() {
       <Link to="/login">
         <button>Login</button>
       </Link>
+      <br />
+      <button onClick={logout}>Logout</button>
       <PostList posts={posts} />
     </PageWithCenteredContent>
   );

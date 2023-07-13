@@ -10,7 +10,7 @@ const LoginPage: React.FC = () => {
 
   const { mutateAsync: login, error, isSuccess } = useLogin();
 
-  const { login: storeLoginData, user } = useAuthData();
+  const { login: storeLoginData } = useAuthData();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
